@@ -61,7 +61,8 @@ namespace ErpDashboard.Client.Pages.Authentication
 
         private void FillAdministratorCredentials()
         {
-            _tokenModel.Email = "mukesh@blazorhero.com";
+           // _tokenModel.Email = "mukesh@blazorhero.com";
+            _tokenModel.Email = "Admin@Admin.com";
             _tokenModel.Password = "123Pa$$word!";
         }
 

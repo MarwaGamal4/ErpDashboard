@@ -60,10 +60,10 @@ namespace ErpDashboard.Infrastructure
                 //Check if User Exists
                 var superUser = new BlazorHeroUser
                 {
-                    FirstName = "Mukesh",
-                    LastName = "Murugan",
-                    Email = "mukesh@blazorhero.com",
-                    UserName = "mukesh",
+                    FirstName = "Admin",
+                    LastName = "Ahmed",
+                    Email = "Admin@Admin.com",
+                    UserName = "Admin",
                     EmailConfirmed = true,
                     PhoneNumberConfirmed = true,
                     CreatedOn = DateTime.Now,
