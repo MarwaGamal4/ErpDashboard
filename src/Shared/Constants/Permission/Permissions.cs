@@ -87,7 +87,10 @@ namespace ErpDashboard.Shared.Constants.Permission
         {
             public const string Chat = "Permissions.Communication.Chat";
         }
-
+        public static class Company
+        {
+            public const string Select = "Permissions.Company.Select";
+        }
         public static class Preferences
         {
             public const string ChangeLanguage = "Permissions.Preferences.ChangeLanguage";
