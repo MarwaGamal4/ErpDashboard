@@ -41,6 +41,10 @@ namespace ErpDashboard.Client.Shared
                 FirstName = user.GetFirstName();
                 SecondName = user.GetLastName();
                 Email = user.GetEmail();
+                if (FirstName.Length > 0)
+                {
+                    FirstLetterOfName = FirstName[0];
+                }
                 var imageResponse = await _accountManager.GetProfilePictureAsync(CurrentUserId);
                 if (imageResponse.Succeeded)
                 {
@@ -86,9 +90,9 @@ namespace ErpDashboard.Client.Shared
                 }
             }
         }
-        private async Task SetCompany() 
+        private async Task SetCompany(int id) 
         {
-            await _localStorage.SetItemAsync<int>("Company", _currentCompany);
+            await _localStorage.SetItemAsync<int>("Company", id);
             _navigationManager.NavigateTo(_navigationManager.Uri, true);
         }
         private async Task RightToLeftToggle()
@@ -217,10 +221,7 @@ namespace ErpDashboard.Client.Shared
                 var CurrentCompany = await _localStorage.GetItemAsync<int?>("Company");
                 if (CurrentCompany == null) _currentCompany = user.GetCompany(); else _currentCompany = CurrentCompany ?? 0;
 
-                if (FirstName.Length > 0)
-                {
-                    FirstLetterOfName = FirstName[0];
-                }
+               
                 await LoadCompanies();
             }
              

@@ -118,10 +118,12 @@ namespace ErpDashboard.Client.Infrastructure.Settings
                 AppbarBackground = "#242939",
                 Background = Colors.Grey.Lighten5,
                 DrawerBackground = "#FFFFFF",
-                DrawerText = "rgba(0,0,0, 0.7)",
+                DrawerText ="rgba(0,0,0, 0.7)",
                 Success = "#007E33",
                 AppbarText= "#9BA2B9",
-
+                BackgroundGrey= "#F5F5F9",
+                TextPrimary= "#282F48", //"#9BA2B9",
+                TextSecondary = "#9BA2B9",
 
             },
             Typography = DefaultTypography,
