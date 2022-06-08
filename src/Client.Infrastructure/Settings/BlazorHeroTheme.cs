@@ -120,7 +120,7 @@ namespace ErpDashboard.Client.Infrastructure.Settings
                 DrawerBackground = "#FFF",
                 DrawerText = "rgba(0,0,0, 0.7)",
                 Success = "#007E33",
-                AppbarText= "#9BA2B9"
+                AppbarText= "#9BA2B9",
 
 
             },

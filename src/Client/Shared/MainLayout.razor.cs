@@ -27,6 +27,7 @@ namespace ErpDashboard.Client.Shared
         private string Email { get; set; }
         private int _currentCompany { get; set; }
         private char FirstLetterOfName { get; set; }
+        private string CompanyName { get; set; } = "";
         private List<GetAllCompaniesDto>CompaniesList {get;set;}
         private async Task LoadDataAsync()
         {
@@ -74,6 +75,7 @@ namespace ErpDashboard.Client.Shared
                 {
                     _currentCompany = CompaniesList.FirstOrDefault().CompanyId;
                 }
+                CompanyName = CompaniesList.FirstOrDefault(x => x.CompanyId == _currentCompany).CompanyName;
                 StateHasChanged();
             }
             else
