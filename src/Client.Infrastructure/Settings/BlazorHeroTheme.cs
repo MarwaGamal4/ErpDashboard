@@ -113,12 +113,16 @@ namespace ErpDashboard.Client.Infrastructure.Settings
         {
             Palette = new Palette()
             {
-                Primary = "#1E88E5",
-                AppbarBackground = "#1E88E5",
+                Primary = "#282F48",
+                Secondary = "#00000089",
+                AppbarBackground = "#242939",
                 Background = Colors.Grey.Lighten5,
                 DrawerBackground = "#FFF",
                 DrawerText = "rgba(0,0,0, 0.7)",
-                Success = "#007E33"
+                Success = "#007E33",
+                AppbarText= "#9BA2B9"
+
+
             },
             Typography = DefaultTypography,
             LayoutProperties = DefaultLayoutProperties
