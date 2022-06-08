@@ -31,6 +31,7 @@ namespace ErpDashboard.Client
                 CultureInfo.DefaultThreadCurrentCulture = culture;
                 CultureInfo.DefaultThreadCurrentUICulture = culture;
             }
+
             await builder.Build().RunAsync();
         }
     }
