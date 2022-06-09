@@ -6,5 +6,6 @@ namespace ErpDashboard.Application.Interfaces.Services
     {
         string UserId { get; }
         int? CompanyID { get; }
+        int? SystemUserId { get; }
     }
 }

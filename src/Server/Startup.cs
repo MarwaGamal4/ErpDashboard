@@ -37,6 +37,7 @@ namespace ErpDashboard.Server
             {
                 options.ResourcesPath = "Resources";
             });
+           // services.AddDatabase(_configuration);
             services.AddCurrentUserService();
             services.AddSerialization();
             services.AddDatabase(_configuration);

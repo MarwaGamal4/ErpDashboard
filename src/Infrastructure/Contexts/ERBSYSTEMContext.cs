@@ -8,16 +8,13 @@ using ErpDashboard.Application.Interfaces.Services;
 
 namespace ErpDashboard.Infrastructure.Contexts
 {
-    public partial class ERBSYSTEMContext : DbContext
+    public partial class ERBSYSTEMContext :Logger
     {
         private protected ICurrentUserService _currentUser;
 
-        public ERBSYSTEMContext(ICurrentUserService currentUser)
-        {
-         _currentUser = currentUser;
-        }
+        
         public ERBSYSTEMContext(DbContextOptions<ERBSYSTEMContext> options, ICurrentUserService currentUser)
-            : base(options)
+            : base(options,currentUser)
         {
             _currentUser = currentUser;
         }
@@ -120,7 +117,7 @@ namespace ErpDashboard.Infrastructure.Contexts
         public virtual DbSet<TbSubscrbtionDetail> TbSubscrbtionDetails { get; set; }
         public virtual DbSet<TbSubscrbtionHeader> TbSubscrbtionHeaders { get; set; }
         public virtual DbSet<TbSubscribtionOpertaion> TbSubscribtionOpertaions { get; set; }
-        public virtual DbSet<TbSystemLogger> TbSystemLoggers { get; set; }
+      
         public virtual DbSet<TbThirdpart> TbThirdparts { get; set; }
         public virtual DbSet<TbTransactionDetail> TbTransactionDetails { get; set; }
         public virtual DbSet<TbTransactionHeader> TbTransactionHeaders { get; set; }

@@ -23,7 +23,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Features\Actions\" />
-    <Folder Include="Features\Customers\" />
     <Folder Include="Features\Subscriptions\" />
   </ItemGroup>
 

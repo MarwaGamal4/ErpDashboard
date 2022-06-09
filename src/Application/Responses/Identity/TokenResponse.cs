@@ -9,5 +9,6 @@ namespace ErpDashboard.Application.Responses.Identity
         public string UserImageURL { get; set; }
         public DateTime RefreshTokenExpiryTime { get; set; }
         public int? CompanyId { get; set; }
+        public int? SystemUserId { get; set; }
     }
 }

@@ -33,6 +33,7 @@ namespace ErpDashboard.Infrastructure.Models.Identity
         public virtual ICollection<ChatHistory<BlazorHeroUser>> ChatHistoryFromUsers { get; set; }
         public virtual ICollection<ChatHistory<BlazorHeroUser>> ChatHistoryToUsers { get; set; }
         public int? DefaultCompanyId { get; set; }
+        public int? SystemUserId { get; set; }
         public BlazorHeroUser()
         {
             ChatHistoryFromUsers = new HashSet<ChatHistory<BlazorHeroUser>>();

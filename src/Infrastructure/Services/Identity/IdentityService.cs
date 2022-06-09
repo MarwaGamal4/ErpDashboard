@@ -67,7 +67,7 @@ namespace ErpDashboard.Infrastructure.Services.Identity
             await _userManager.UpdateAsync(user);
 
             var token = await GenerateJwtAsync(user);
-            var response = new TokenResponse { Token = token, RefreshToken = user.RefreshToken, UserImageURL = user.ProfilePictureDataUrl,CompanyId = user.DefaultCompanyId };
+            var response = new TokenResponse { Token = token, RefreshToken = user.RefreshToken, UserImageURL = user.ProfilePictureDataUrl,CompanyId = user.DefaultCompanyId,SystemUserId = user.SystemUserId };
             return await Result<TokenResponse>.SuccessAsync(response);
         }
 
@@ -88,7 +88,7 @@ namespace ErpDashboard.Infrastructure.Services.Identity
             user.RefreshToken = GenerateRefreshToken();
             await _userManager.UpdateAsync(user);
 
-            var response = new TokenResponse { Token = token, RefreshToken = user.RefreshToken, RefreshTokenExpiryTime = user.RefreshTokenExpiryTime ,CompanyId = user.DefaultCompanyId};
+            var response = new TokenResponse { Token = token, RefreshToken = user.RefreshToken, RefreshTokenExpiryTime = user.RefreshTokenExpiryTime ,CompanyId = user.DefaultCompanyId, SystemUserId = user.SystemUserId };
             return await Result<TokenResponse>.SuccessAsync(response);
         }
 
@@ -119,7 +119,8 @@ namespace ErpDashboard.Infrastructure.Services.Identity
                 new(ClaimTypes.Name, user.FirstName),
                 new(ClaimTypes.Surname, user.LastName),
                 new(ClaimTypes.MobilePhone, user.PhoneNumber ?? string.Empty),
-                new(ClaimTypes.Country, user.DefaultCompanyId.ToString() ?? string.Empty)
+                new(ClaimTypes.Country, user.DefaultCompanyId.ToString() ?? string.Empty),
+                new(ClaimTypes.Actor, user.SystemUserId.ToString() ?? string.Empty)
                 
             }
             .Union(userClaims)

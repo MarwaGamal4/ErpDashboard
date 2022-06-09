@@ -2,7 +2,7 @@
 @using System.Security.Claims
 
 <UserCard />
-<MudNavMenu Rounded="true" Margin="Margin.Dense"  Class="pa-2">
+<MudNavMenu Rounded="true" Margin="Margin.Dense" Bordered="true"  Class="pa-2">
     <MudNavLink Href="/" Match="NavLinkMatch.All" Icon="@Icons.Material.Outlined.Home">@_localizer["Home"]</MudNavLink>
     @if (_canViewHangfire)
     {
