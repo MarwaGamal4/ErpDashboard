@@ -1,0 +1,28 @@
+{
+  "name": "erpdashboard",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode development"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@devexpress/analytics-core": "21.1.5",
+    "devexpress-reporting": "21.1.5",
+    "devextreme": "21.1.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "~2.0.0",
+    "html-loader": "^0.5.5",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.46.0",
+    "webpack-command": "^0.5.1",
+    "webpack-nano": "^1.1.1"
+  }
+}

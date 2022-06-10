@@ -1,3 +1,5 @@
+using DevExpress.AspNetCore;
+using DevExpress.XtraReports.Web.Extensions;
 using ErpDashboard.Application.Extensions;
 using ErpDashboard.Infrastructure.Extensions;
 using ErpDashboard.Server.Extensions;
@@ -9,11 +11,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Localization;
 using System.IO;
+using System.Linq;
 
 namespace ErpDashboard.Server
 {
@@ -32,6 +36,9 @@ namespace ErpDashboard.Server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
+            services.AddDevExpressControls();
+            services.AddMvc().AddNewtonsoftJson();
+            services.AddScoped<ReportStorageWebExtension, CustomReportStorageWebExtension>();
             services.AddSignalR();
             services.AddLocalization(options =>
             {
@@ -66,11 +73,18 @@ namespace ErpDashboard.Server
                 config.ReportApiVersions = true;
             });
             services.AddLazyCache();
+            services.AddResponseCompression(opts =>
+            {
+                opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
+                    new[] { "application/octet-stream" });
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IStringLocalizer<Startup> localizer)
         {
             app.UseCors();
+            app.UseResponseCompression();
+
             app.UseExceptionHandling(env);
             app.UseHttpsRedirection();
             app.UseMiddleware<ErrorHandlerMiddleware>();
