@@ -27,13 +27,15 @@ namespace ErpDashboard.Server
                 Font = new System.Drawing.Font("Times New Roman", 48F, System.Drawing.FontStyle.Bold),
                 Padding = new PaddingInfo(2, 2, 0, 96, System.Drawing.GraphicsUnit.Pixel)
             });
+            report.Name = "TestReport";
+            
             report.Bands.Add(band);
             return report;
         }
 
         static ReportFactory()
         {
-            Reports.Add(new ReportInfo() { DisplayName = "My Report", Name = "MyReport", Report = CreateReport() });
+            Reports.Add(new ReportInfo() { DisplayName = "My Report", Name = "MyReport", Report = CreateReport()});
            // Reports.Add(new ReportInfo() { DisplayName = "TestReport", Name = "TestReport", Report = new TestReport() });
         }
     }

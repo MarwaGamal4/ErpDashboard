@@ -16,6 +16,13 @@
     <MudNavLink Href="/swagger/index.html" Target="_blank" Icon="@Icons.Material.Outlined.LiveHelp">
         @_localizer["Swagger"]
     </MudNavLink>
+        <MudListSubheader Class="mt-2 mb-n2">@_localizer["Reporting"]</MudListSubheader>
+        <MudNavLink Href="/viewer" Icon="@Icons.Material.Outlined.Report">
+            @_localizer["Test Viewer"]
+        </MudNavLink>
+        <MudNavLink Href="/designer" Icon="@Icons.Material.Outlined.DesignServices">
+            @_localizer["Test Designer"]
+        </MudNavLink>
     <MudListSubheader Class="mt-2 mb-n2">@_localizer["Personal"]</MudListSubheader>
     @if (_canViewDashboards)
     {
