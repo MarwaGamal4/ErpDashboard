@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.UI;
+using ErpDashboard.Server.Reports;
 using System.Collections.Generic;
 
 namespace ErpDashboard.Server
@@ -36,7 +37,8 @@ namespace ErpDashboard.Server
         static ReportFactory()
         {
             Reports.Add(new ReportInfo() { DisplayName = "My Report", Name = "MyReport", Report = CreateReport()});
-           // Reports.Add(new ReportInfo() { DisplayName = "TestReport", Name = "TestReport", Report = new TestReport() });
+            Reports.Add(new ReportInfo() { DisplayName = "Test Repoer", Name = "TestReport", Report = new Sticker()});
+           
         }
     }
 }

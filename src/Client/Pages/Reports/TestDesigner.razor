@@ -2,12 +2,12 @@
 @inject IJSRuntime JSRuntime
 @implements IDisposable
 
-<div style="width: 100%;  height: 800px" data-rname="Test2" id="designer" data-bind="dxReportDesigner: $data"></div>
+<div style="width: 100%;  height: 800px"  id="designer" data-bind="dxReportDesigner: $data"></div>
 
 @code {
      protected override void OnAfterRender(bool firstRender)
     {
-        JSRuntime.InvokeAsync<object>("JsFunctions.InitReportDesigner","MyReport","designer");
+        JSRuntime.InvokeAsync<object>("JsFunctions.InitReportDesigner","TestReport","designer");
     }
 
     public void Dispose()

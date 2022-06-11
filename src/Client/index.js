@@ -5,12 +5,14 @@ import "./style.css";
 window.JsFunctions = {
 
     _viewerOptions: {
+        hostUrl : window.location.host,
         reportUrl: ko.observable("MyReport"),
         requestOptions: {
             invokeAction: "/DXXRDV"
         }
     },
     _designerOptions: {
+        hostUrl : window.location.host,
         reportUrl: ko.observable("MyReport"),
         requestOptions: {
             getDesignerModelAction: "api/Reporting/getReportDesignerModel"

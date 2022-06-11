@@ -37,7 +37,15 @@ namespace ErpDashboard.Server
         {
             services.AddCors();
             services.AddDevExpressControls();
-            services.AddMvc().AddNewtonsoftJson();
+            services.AddMvc().AddNewtonsoftJson().ConfigureApplicationPartManager(x => {
+                var parts = x.ApplicationParts;
+                var aspNetCoreReportingAssemblyName = typeof(DevExpress.AspNetCore.Reporting.WebDocumentViewer.WebDocumentViewerController).Assembly.GetName().Name;
+                var reportingPart = parts.FirstOrDefault(part => part.Name == aspNetCoreReportingAssemblyName);
+                if (reportingPart != null)
+                {
+                    parts.Remove(reportingPart);
+                }
+            });
             services.AddScoped<ReportStorageWebExtension, CustomReportStorageWebExtension>();
             services.AddSignalR();
             services.AddLocalization(options =>
