@@ -1,6 +1,7 @@
 using DevExpress.AspNetCore;
 using DevExpress.XtraReports.Web.Extensions;
 using ErpDashboard.Application.Extensions;
+ 
 using ErpDashboard.Infrastructure.Extensions;
 using ErpDashboard.Server.Extensions;
 using ErpDashboard.Server.Filters;
@@ -58,6 +59,7 @@ namespace ErpDashboard.Server
             services.AddDatabase(_configuration);
             services.AddServerStorage(); //TODO - should implement ServerStorageProvider to work correctly!
             services.AddScoped<ServerPreferenceManager>();
+      
             services.AddServerLocalization();
             services.AddIdentity();
             services.AddJwtAuthentication(services.GetApplicationSettings(_configuration));
@@ -86,6 +88,7 @@ namespace ErpDashboard.Server
                 opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
                     new[] { "application/octet-stream" });
             });
+            Application.ServicesHelper.provider = services.BuildServiceProvider();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IStringLocalizer<Startup> localizer)

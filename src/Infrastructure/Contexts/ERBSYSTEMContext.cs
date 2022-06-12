@@ -18,7 +18,7 @@ namespace ErpDashboard.Infrastructure.Contexts
         {
             _currentUser = currentUser;
         }
-
+         
         public virtual DbSet<MigrationHistory> MigrationHistories { get; set; }
         public virtual DbSet<TbAccount> TbAccounts { get; set; }
         public virtual DbSet<TbAlarmMessage> TbAlarmMessages { get; set; }
@@ -1147,6 +1147,7 @@ namespace ErpDashboard.Infrastructure.Contexts
                     .WithMany(p => p.TbCustomers)
                     .HasForeignKey(d => d.CategoryId)
                     .HasConstraintName("FK_dbo.tb_Customers_dbo.tb_CustomerCategory_CategoryID");
+                entity.HasQueryFilter(x => _currentUser.CompanyID.HasValue ? x.ComId == _currentUser.CompanyID : true);
             });
 
             modelBuilder.Entity<TbCustomerAdress>(entity =>

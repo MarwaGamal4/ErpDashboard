@@ -2,11 +2,21 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using ErpDashboard.Infrastructure.Contexts;
+using ErpDashboard.Server.Reports;
+using DevExpress.DataAccess.ObjectBinding;
 
 namespace ErpDashboard.Server
 {
     public class CustomReportStorageWebExtension : DevExpress.XtraReports.Web.Extensions.ReportStorageWebExtension
     {
+        private protected readonly ERBSYSTEMContext _context;
+
+        public CustomReportStorageWebExtension(ERBSYSTEMContext context)
+        {
+            _context = context;
+        }
+
         public override bool CanSetData(string url)
         {
             // Check if the URL is available in the report storage.
@@ -21,12 +31,12 @@ namespace ErpDashboard.Server
             var item = ReportFactory.Reports.FirstOrDefault(x => x.Name == url);
             using (MemoryStream ms = new MemoryStream())
             {
+                 
                 item.Report.SaveLayoutToXml(ms);
                 return ms.ToArray();
             }
         }
-
-
+ 
         public override Dictionary<string, string> GetUrls()
         {
             // Get URLs and display names for all reports available in the storage.

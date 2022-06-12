@@ -8,7 +8,8 @@ window.JsFunctions = {
         hostUrl : window.location.host,
         reportUrl: ko.observable("MyReport"),
         requestOptions: {
-            invokeAction: "/DXXRDV"
+            invokeAction: "DXXRDV",
+            
         }
     },
     _designerOptions: {

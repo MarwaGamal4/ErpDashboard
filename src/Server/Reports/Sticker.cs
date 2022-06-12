@@ -12,5 +12,20 @@ namespace ErpDashboard.Server.Reports
         {
             InitializeComponent();
         }
+
+        private void Sticker_ParametersRequestValueChanged(object sender, DevExpress.XtraReports.Parameters.ParametersRequestValueChangedEventArgs e)
+        {
+            xrLabel1.Text = "Parameter Changed The Text";
+        }
+
+        private void Sticker_ParametersRequestSubmit(object sender, DevExpress.XtraReports.Parameters.ParametersRequestEventArgs e)
+        {
+            xrLabel1.Text = "Parameter Changed The Text";
+        }
+
+        private void Sticker_AfterPrint(object sender, EventArgs e)
+        {
+            xrLabel1.Text = "Parameter Changed The Text";
+        }
     }
 }
