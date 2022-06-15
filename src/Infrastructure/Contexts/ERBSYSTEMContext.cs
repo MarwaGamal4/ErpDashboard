@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using ErpDashboard.Application.Models;
 using ErpDashboard.Application.Interfaces.Services;
+using ErpDashboard.Infrastructure.Extensions;
 
 #nullable disable
 
@@ -138,7 +139,7 @@ namespace ErpDashboard.Infrastructure.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+           // modelBuilder.SetQueryFilterOnAllEntities<ISoftDeletable>(p => !p.IsDeleted);
             modelBuilder.HasAnnotation("Relational:Collation", "Arabic_CI_AS");
 
             modelBuilder.Entity<MigrationHistory>(entity =>
