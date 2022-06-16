@@ -1,7 +1,8 @@
-﻿using ErpDashboard.Application.Features.Products.Commands.AddEdit;
+﻿//using ErpDashboard.Application.Features.Products.Commands.AddEdit;
 using ErpDashboard.Application.Features.Products.Queries.GetAllPaged;
 using ErpDashboard.Application.Requests.Catalog;
 using ErpDashboard.Client.Infrastructure.Extensions;
+using ErpDashboard.Shared.ServerSideValidations;
 using ErpDashboard.Shared.Wrapper;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -42,6 +43,16 @@ namespace ErpDashboard.Client.Infrastructure.Managers.Catalog.Product
         {
             var response = await _httpClient.GetAsync(Routes.ProductsEndpoints.GetAllPaged(request.PageNumber, request.PageSize, request.SearchString, request.Orderby));
             return await response.ToPaginatedResult<GetAllPagedProductsResponse>();
+        }
+
+        public async Task<bool> IsExist(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                return false;
+            }
+            var response = await _httpClient.GetAsync(Routes.ProductsEndpoints.Exist(name));
+            return await response.Content.ReadFromJsonAsync<bool>();
         }
 
         public async Task<IResult<int>> SaveAsync(AddEditProductCommand request)

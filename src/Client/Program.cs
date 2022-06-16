@@ -18,6 +18,7 @@ namespace ErpDashboard.Client
                           .CreateDefault(args)
                           .AddRootComponents()
                           .AddClientServices();
+
             var host = builder.Build();
             var storageService = host.Services.GetRequiredService<ClientPreferenceManager>();
             if (storageService != null)

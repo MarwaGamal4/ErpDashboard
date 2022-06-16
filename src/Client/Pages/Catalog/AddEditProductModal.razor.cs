@@ -1,11 +1,12 @@
 ﻿using Blazored.FluentValidation;
 using ErpDashboard.Application.Features.Brands.Queries.GetAll;
-using ErpDashboard.Application.Features.Products.Commands.AddEdit;
+//using ErpDashboard.Application.Features.Products.Commands.AddEdit;
 using ErpDashboard.Application.Requests;
 using ErpDashboard.Client.Extensions;
 using ErpDashboard.Client.Infrastructure.Managers.Catalog.Brand;
 using ErpDashboard.Client.Infrastructure.Managers.Catalog.Product;
 using ErpDashboard.Shared.Constants.Application;
+using ErpDashboard.Shared.ServerSideValidations;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.SignalR.Client;
@@ -95,7 +96,7 @@ namespace ErpDashboard.Client.Pages.Catalog
         private void DeleteAsync()
         {
             AddEditProductModel.ImageDataURL = null;
-            AddEditProductModel.UploadRequest = new UploadRequest();
+          //  AddEditProductModel.UploadRequest = new UploadRequest();
         }
 
         private IBrowserFile _file;
@@ -111,7 +112,7 @@ namespace ErpDashboard.Client.Pages.Catalog
                 var buffer = new byte[imageFile.Size];
                 await imageFile.OpenReadStream().ReadAsync(buffer);
                 AddEditProductModel.ImageDataURL = $"data:{format};base64,{Convert.ToBase64String(buffer)}";
-                AddEditProductModel.UploadRequest = new UploadRequest { Data = buffer, UploadType = Application.Enums.UploadType.Product, Extension = extension };
+               // AddEditProductModel.UploadRequest = new UploadRequest { Data = buffer, UploadType = Application.Enums.UploadType.Product, Extension = extension };
             }
         }
 

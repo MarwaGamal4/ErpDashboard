@@ -3,9 +3,11 @@ using ErpDashboard.Client.Infrastructure.Authentication;
 using ErpDashboard.Client.Infrastructure.Managers;
 using ErpDashboard.Client.Infrastructure.Managers.ExtendedAttribute;
 using ErpDashboard.Client.Infrastructure.Managers.Preferences;
+using ErpDashboard.Client.Infrastructure.ServerSideValidations;
 using ErpDashboard.Domain.Entities.ExtendedAttributes;
 using ErpDashboard.Domain.Entities.Misc;
 using ErpDashboard.Shared.Constants.Permission;
+using ErpDashboard.Shared.ServerSideValidations.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -56,6 +58,7 @@ namespace ErpDashboard.Client.Extensions
                 .AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies())
                 .AddScoped<ClientPreferenceManager>()
                 .AddScoped<BlazorHeroStateProvider>()
+                .AddTransient<ProductValidationServices, ProductValidationService>()
                 .AddScoped<AuthenticationStateProvider, BlazorHeroStateProvider>()
                 .AddManagers()
                 .AddExtendedAttributeManagers()

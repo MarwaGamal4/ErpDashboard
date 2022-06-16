@@ -55,10 +55,10 @@
                 }
                 <MudItem xs="12" md="6">
                     <MudItem>
-                        <MudAvatar Image="@(AddEditProductModel.ImageDataURL)" Square="true" Style="height: auto; width: auto; max-height: 100%"> </MudAvatar>
+                        @*<MudAvatar Image="@(AddEditProductModel.ImageDataURL)" Square="true" Style="height: auto; width: auto; max-height: 100%"> </MudAvatar>*@
                     </MudItem>
                     <MudItem>
-                        <InputFile id="fileInput" hidden OnChange="UploadFiles" />
+                        @*<InputFile id="fileInput" hidden OnChange="UploadFiles" />
                         <div>
                             <MudButton HtmlTag="label"
                                        Variant="Variant.Text"
@@ -85,7 +85,7 @@
                                     @_localizer["Delete"]
                                 </MudButton>
                             }
-                        </div>
+                        </div>*@
                     </MudItem>
                 </MudItem>
             </MudGrid>

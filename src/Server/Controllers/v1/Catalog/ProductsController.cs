@@ -3,6 +3,7 @@ using ErpDashboard.Application.Features.Products.Commands.Delete;
 using ErpDashboard.Application.Features.Products.Queries.Export;
 using ErpDashboard.Application.Features.Products.Queries.GetAllPaged;
 using ErpDashboard.Application.Features.Products.Queries.GetProductImage;
+using ErpDashboard.Application.Features.Products.Queries.IsExist;
 using ErpDashboard.Shared.Constants.Permission;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -75,6 +76,18 @@ namespace ErpDashboard.Server.Controllers.v1.Catalog
         public async Task<IActionResult> Export(string searchString = "")
         {
             return Ok(await _mediator.Send(new ExportProductsQuery(searchString)));
+        }
+
+        /// <summary>
+        /// Search Products if Exist
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>Status 200 OK</returns>
+       
+        [HttpGet("Exist/{name}")]
+        public async Task<IActionResult> IsExist(string name)
+        {
+            return Ok(await _mediator.Send(new IsProductExistQuery() { Name = name}));
         }
     }
 }

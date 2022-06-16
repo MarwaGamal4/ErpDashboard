@@ -1,12 +1,13 @@
 using DevExpress.AspNetCore;
 using DevExpress.XtraReports.Web.Extensions;
 using ErpDashboard.Application.Extensions;
-
+using ErpDashboard.Client.Infrastructure.ServerSideValidations;
 using ErpDashboard.Infrastructure.Extensions;
 using ErpDashboard.Server.Extensions;
 using ErpDashboard.Server.Filters;
 using ErpDashboard.Server.Managers.Preferences;
 using ErpDashboard.Server.Middlewares;
+using ErpDashboard.Shared.ServerSideValidations.Interfaces;
 using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -39,6 +40,7 @@ namespace ErpDashboard.Server
         {
             services.AddCors();
             services.AddDevExpressControls();
+          //  services.AddTransient<ProductValidationServices, ProductValidationService>();
             services.AddMvc().AddNewtonsoftJson().ConfigureApplicationPartManager(x =>
             {
                 var parts = x.ApplicationParts;
@@ -61,6 +63,7 @@ namespace ErpDashboard.Server
             services.AddDatabase(_configuration);
             services.AddServerStorage(); //TODO - should implement ServerStorageProvider to work correctly!
             services.AddScoped<ServerPreferenceManager>();
+         
             services.AddPaymobCashIn(config =>
                 {
                     config.ApiKey = "ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SndjbTltYVd4bFgzQnJJam94T0RBME1Ea3NJbU5zWVhOeklqb2lUV1Z5WTJoaGJuUWlMQ0p1WVcxbElqb2lhVzVwZEdsaGJDSjkuRmVRVHZXQ3ExclFlTTkycDR2T0RtMWVsMzVXVHJOUEsyamd5WEg1U2luRDRuUVVjc18tS0MtcUJsNlc1T1lqRHlpczBJZzluMVJNdG40N1Rqd0k5MHc=";

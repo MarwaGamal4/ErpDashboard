@@ -410,6 +410,13 @@
             <param name="searchString"></param>
             <returns>Status 200 OK</returns>
         </member>
+        <member name="M:ErpDashboard.Server.Controllers.v1.Catalog.ProductsController.IsExist(System.String)">
+            <summary>
+            Search Products if Exist
+            </summary>
+            <param name="name"></param>
+            <returns>Status 200 OK</returns>
+        </member>
         <member name="M:ErpDashboard.Server.Controllers.v1.DashboardController.GetDataAsync">
             <summary>
             Get Dashboard Data

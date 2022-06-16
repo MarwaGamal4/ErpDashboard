@@ -1,6 +1,7 @@
-﻿using ErpDashboard.Application.Features.Products.Commands.AddEdit;
+﻿//using ErpDashboard.Application.Features.Products.Commands.AddEdit;
 using ErpDashboard.Application.Features.Products.Queries.GetAllPaged;
 using ErpDashboard.Application.Requests.Catalog;
+using ErpDashboard.Shared.ServerSideValidations;
 using ErpDashboard.Shared.Wrapper;
 using System.Threading.Tasks;
 
@@ -17,5 +18,6 @@ namespace ErpDashboard.Client.Infrastructure.Managers.Catalog.Product
         Task<IResult<int>> DeleteAsync(int id);
 
         Task<IResult<string>> ExportToExcelAsync(string searchString = "");
+        Task<bool> IsExist(string name);
     }
 }
