@@ -16,9 +16,9 @@ namespace ErpDashboard.Application.Features.Companies.AddEdit
     }
     internal class AddEditCompanyCommandHandler : IRequestHandler<AddEditCompanyCommand, IResult<int>>
     {
-        private readonly CustomIUnitOfWork<int> _unitOfWork;
+        private readonly ICustomIUnitOfWork<int> _unitOfWork;
 
-        public AddEditCompanyCommandHandler(CustomIUnitOfWork<int> unitOfWork)
+        public AddEditCompanyCommandHandler(ICustomIUnitOfWork<int> unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }

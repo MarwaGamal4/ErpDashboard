@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ErpDashboard.Application.Interfaces.Repositories;
+using ErpDashboard.Application.Interfaces.Services;
 using ErpDashboard.Domain.Entities.Catalog;
 using ErpDashboard.Shared.Constants.Application;
 using ErpDashboard.Shared.Wrapper;
@@ -27,18 +28,25 @@ namespace ErpDashboard.Application.Features.Brands.Commands.AddEdit
         private readonly IMapper _mapper;
         private readonly IStringLocalizer<AddEditBrandCommandHandler> _localizer;
         private readonly IUnitOfWork<int> _unitOfWork;
-
-        public AddEditBrandCommandHandler(IUnitOfWork<int> unitOfWork, IMapper mapper, IStringLocalizer<AddEditBrandCommandHandler> localizer)
+        private readonly ICurrentUserService _userService;
+        public AddEditBrandCommandHandler(IUnitOfWork<int> unitOfWork, IMapper mapper, IStringLocalizer<AddEditBrandCommandHandler> localizer, ICurrentUserService userService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _localizer = localizer;
+            _userService = userService;
         }
 
         public async Task<Result<int>> Handle(AddEditBrandCommand command, CancellationToken cancellationToken)
         {
+            var CompanyID = _userService.CompanyID;
+            if (!CompanyID.HasValue)
+            {
+                return await Result<int>.FailAsync(_localizer["NO COMPANY WITH THIS ID"]);
+            }
             if (command.Id == 0)
             {
+              
                 var brand = _mapper.Map<Brand>(command);
                 await _unitOfWork.Repository<Brand>().AddAsync(brand);
                 await _unitOfWork.CommitAndRemoveCache(cancellationToken, ApplicationConstants.Cache.GetAllBrandsCacheKey);

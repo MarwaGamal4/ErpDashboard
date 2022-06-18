@@ -15,7 +15,7 @@ namespace ErpDashboard.Application.Interfaces.Repositories
 
         Task Rollback();
     }
-    public interface CustomIUnitOfWork<TId> : IDisposable
+    public interface ICustomIUnitOfWork<TId> : IDisposable
     {
         CustomIRepositoryAsync<T, TId> Repository<T>() where T : class;
 

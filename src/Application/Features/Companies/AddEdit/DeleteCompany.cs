@@ -16,9 +16,9 @@ namespace ErpDashboard.Application.Features.Companies.AddEdit
     }
     internal class DeleteCompanyCommandHandler : IRequestHandler<DeleteCompanyCommand, IResult<int>>
     {
-        private readonly CustomIUnitOfWork<int> _unitOfWork;
+        private readonly ICustomIUnitOfWork<int> _unitOfWork;
 
-        public DeleteCompanyCommandHandler(CustomIUnitOfWork<int> unitOfWork)
+        public DeleteCompanyCommandHandler(ICustomIUnitOfWork<int> unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }

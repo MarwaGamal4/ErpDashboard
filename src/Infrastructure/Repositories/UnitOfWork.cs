@@ -86,7 +86,7 @@ namespace ErpDashboard.Infrastructure.Repositories
             disposed = true;
         }
     }
-    public class CustomUnitOfWork<TId> : CustomIUnitOfWork<TId>
+    public class CustomUnitOfWork<TId> : ICustomIUnitOfWork<TId>
     {
         private readonly ICurrentUserService _currentUserService;
         private readonly ERBSYSTEMContext _dbContext;
