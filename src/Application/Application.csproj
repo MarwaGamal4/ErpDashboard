@@ -23,9 +23,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Features\Actions\" />
-    <Folder Include="Features\MealsCategory\Queries\Dto\" />
-    <Folder Include="Features\MealsCategory\Queries\GetAll\" />
-    <Folder Include="Features\MealsCategory\Queries\GetById\" />
     <Folder Include="Features\Subscriptions\" />
   </ItemGroup>
 
