@@ -10,6 +10,8 @@ using Microsoft.Extensions.Localization;
 using System.ComponentModel.DataAnnotations;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace ErpDashboard.Application.Features.MealsCategory.Commands.AddEdit
 {
@@ -20,7 +22,6 @@ namespace ErpDashboard.Application.Features.MealsCategory.Commands.AddEdit
         public string Name { get; set; }
         [Required]
         public string Symbol { get; set; }
-        [Required]
         public bool IsSnack { get; set; }
     }
 
@@ -47,8 +48,8 @@ namespace ErpDashboard.Application.Features.MealsCategory.Commands.AddEdit
             }
             if (command.Id == 0)
             {
-              
-                var MealCat = _mapper.Map<TbMealsCategory>(command);
+
+                TbMealsCategory MealCat = _mapper.Map<TbMealsCategory>(command);
                 await _unitOfWork.Repository<TbMealsCategory>().AddAsync(MealCat);
                 await _unitOfWork.Commit(cancellationToken);
                 return await Result<int>.SuccessAsync(MealCat.Id, _localizer["Meal Category Saved"]);
@@ -62,7 +63,7 @@ namespace ErpDashboard.Application.Features.MealsCategory.Commands.AddEdit
                     MealCat.Symbol = command.Symbol ?? command.Symbol;
                     MealCat.Issnack = command.IsSnack ;
                     await _unitOfWork.Repository<TbMealsCategory>().UpdateAsync(MealCat , MealCat.Id);
-                    await _unitOfWork.CommitAndRemoveCache(cancellationToken, ApplicationConstants.Cache.GetAllBrandsCacheKey);
+                    await _unitOfWork.Commit(cancellationToken);
                     return await Result<int>.SuccessAsync(MealCat.Id, _localizer["Meal Category Updated"]);
                 }
                 else

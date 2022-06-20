@@ -35,9 +35,10 @@ namespace ErpDashboard.Application.Features.MealsCategory.Queries.GetAll
         }
         public async Task<Result<List<GetMealCategoryResponse>>> Handle(GetAllMealCategoryQuery request, CancellationToken cancellationToken)
         {
-            Func<Task<List<TbMealsCategory>>> getAllCats = () => _unitOfWork.Repository<TbMealsCategory>().GetAllAsync();
-            var CatList = await _cashe.GetOrAddAsync(ApplicationConstants.Cache.GetAllBrandsCacheKey, getAllCats);
-            var mappedCates = _mapper.Map<List<GetMealCategoryResponse>>(CatList);
+            //Func<Task<List<TbMealsCategory>>> getAllCats = () => _unitOfWork.Repository<TbMealsCategory>().GetAllAsync();
+            var categories = _unitOfWork.Repository<TbMealsCategory>().GetAllAsync();
+            //var CatList = await _cashe.GetOrAddAsync(ApplicationConstants.Cache.GetAllBrandsCacheKey, getAllCats);
+            var mappedCates = _mapper.Map<List<GetMealCategoryResponse>>(categories);
             return await Result<List<GetMealCategoryResponse>>.SuccessAsync(mappedCates);
         }
     }

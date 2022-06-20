@@ -36,7 +36,7 @@ namespace ErpDashboard.Application.Features.Brands.Commands.Delete
                 if (brand != null)
                 {
                     await _unitOfWork.Repository<Brand>().DeleteAsync(brand);
-                    await _unitOfWork.CommitAndRemoveCache(cancellationToken, ApplicationConstants.Cache.GetAllBrandsCacheKey);
+                    await _unitOfWork.CommitAndRemoveCache(cancellationToken ,ApplicationConstants.Cache.GetAllBrandsCacheKey);
                     return await Result<int>.SuccessAsync(brand.Id, _localizer["Brand Deleted"]);
                 }
                 else
