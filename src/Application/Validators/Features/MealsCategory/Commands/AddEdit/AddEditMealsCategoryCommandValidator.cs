@@ -16,6 +16,7 @@ namespace ErpDashboard.Application.Validators.Features.MealsCategory.Commands.Ad
             RuleFor(request => request.Name)
            .Must(x => !string.IsNullOrWhiteSpace(x)).WithMessage(x => localizer["Name is required!"]);
 
+
             RuleFor(request => request.Symbol)
             .Must(x => !string.IsNullOrWhiteSpace(x)).WithMessage(x => localizer["Symbol is required!"]);
         }
